@@ -58,7 +58,14 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-
+    window.addEventListener('keydown', function(e) {
+      let x = e.keyCode;
+      const audio = document.querySelector(`audio[data-key="${x}"]`);
+      if (!audio) return;
+      audio.currentTime = 0;
+      audio.play();
+      console.log(audio);
+    });
 </script>
 
 
