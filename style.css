@@ -1,3 +1,51 @@
 html {
   font-size: 10px;
 }
+
+body {
+  background-image: url(../drum-risk/background.jpg);
+  background-position: bottom center;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif
+}
+
+.keys {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.key {
+  display: flex;
+  border: 3px solid black;
+  border-radius: 6px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 85px;
+  width: 100px;
+  margin: 10px;
+  background: rgba(0, 0, 0, 0.4);
+  transition: all .07s ease;
+}
+
+.playing {
+  transform: scale(1.1);
+  border-color: #ffc600;
+  box-shadow: 0 0 1rem #ffc600;
+}
+
+kbd {
+  font-size: 4rem;
+  color: white;
+}
+
+.sound {
+  color: gold;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+}
