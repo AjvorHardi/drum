@@ -8,6 +8,8 @@
 <body>
 
 
+  <input id="size" type="range" name="width" min="200" max="1500" value="1000" data-sizing="px"></input>
+
   <div class="keys">
     <div data-key="65" class="key">
       <kbd>A</kbd>
@@ -58,9 +60,7 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-    window.addEventListener('keydown', playSound);
-
-
+  
     function playSound(e) {
       let x = e.keyCode;
       const audio = document.querySelector(`audio[data-key="${x}"]`);
@@ -71,15 +71,25 @@
       key.classList.add('playing');
     };
     
-
     function removeTransition(e) {
       if (e.propertyName !== 'transform') return;
       this.classList.remove('playing');
     }
 
+    function handle(e) {
+      console.log(this);
+      const suffix = this.dataset.sizing;
+      document.documentElement.style.setProperty(`--width`, this.value + suffix);
+    }
+
+    const input = document.querySelector('input');
+    input.addEventListener('change', handle);
+    input.addEventListener('mousemove', handle);
+
     const keys = document.querySelectorAll('.key');
     keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 
+    window.addEventListener('keydown', playSound);
 </script>
 
 
