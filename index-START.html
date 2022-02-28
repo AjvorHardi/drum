@@ -90,6 +90,18 @@
     keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 
     window.addEventListener('keydown', playSound);
+
+    const pressed = [];
+    const secretCode = 'nomore';
+
+    window.addEventListener('keyup', (e) => {
+      pressed.push(e.key);
+      pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+      const array = pressed.join('');
+      if (array === secretCode) {
+        document.querySelector('.keys').style.visibility = "hidden";
+      }
+    })
 </script>
 
 
